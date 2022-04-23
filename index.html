@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="hu">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tik-Tak-Toe</title>
+    <link rel="stylesheet" href="tiktaktoe.css">
+    <script src="tiktaktoe.js"></script>
+</head>
+<body onload="map_updater()">
+    <div id="settings">
+        <span id="settings_wheel" style="display:block" onclick="settings()">&#9881;</span>
+        <form id="settings_inner">
+            <label>Játék módok:</label>
+            <select id="mode">
+                <option value="pvp">Player vs. Player</option>
+                <option value="pve">Player vs. Bot</option>
+            </select><br>
+            <label>Pályák:</label>
+            <select id="mapsize">
+                <option value="3">3 x 3</option>
+                <option value="5">5 x 5</option>
+                <option value="10">10 x 10</option>
+            </select>
+        </form>
+    </div>
+    <div>Most jönn a: <span id="aktiv_player"></span></div>
+    <table id="table_mezok"></table>
+    <button onclick="reset()">Reset</button>
+    <button onclick="test()">test</button>
+    
+</body>
+</html>
