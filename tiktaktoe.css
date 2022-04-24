@@ -17,8 +17,24 @@ td {
     cursor: pointer;
     text-align: center;
     vertical-align: middle;
-    font-size: 36px;
-    font-family:'Times New Roman', Times, serif;
+    font-size: 75px;
+    font-family: 'Quicksand', sans-serif;
+}
+
+#main {
+    width: fit-content;
+    height: fit-content;
+}
+
+#next_button {
+    display: none;
+    position: relative;
+    left: 50%;
+    transform: translate(-50%);
+    border: 2px solid rgb(170, 170, 170);
+    border-radius: 4px;
+    font-size: 30px;
+    cursor: pointer;
 }
 
 #settings {

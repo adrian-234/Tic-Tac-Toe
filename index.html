@@ -5,6 +5,10 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Tik-Tak-Toe</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@600&display=swap" rel="stylesheet">
+
     <link rel="stylesheet" href="tiktaktoe.css">
     <script src="tiktaktoe.js"></script>
 </head>
@@ -25,8 +29,11 @@
             </select>
         </form>
     </div>
-    <div>Most jönn a: <span id="aktiv_player"></span></div>
-    <table id="table_mezok"></table>
+    <div id="main">
+        <div>Most jönn a: <span id="aktiv_player"></span></div>
+        <button id="next_button" onclick="reset()">Next</button>
+        <table id="table_mezok"></table>
+    </div>
     <button onclick="reset()">Reset</button>
     <button onclick="test()">test</button>
     

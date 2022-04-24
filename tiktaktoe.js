@@ -8,7 +8,6 @@ var mehet = true;
 
 function player_move(sor,gomb) {
     if (alak_hly[sor][gomb] == 0 && clickable) {
-        console.log(sor,gomb);
         document.getElementById("mezo" + sor + gomb).innerHTML = alakzat;
         alak_hly[sor][gomb] = alakzat;
         if (alakzat == "X") {
@@ -16,7 +15,6 @@ function player_move(sor,gomb) {
         } else {
             alakzat = "X";
         }
-
         document.getElementById("aktiv_player").innerHTML = alakzat;
         if (!win_check() && mode == "pve") {
             clickable = false;
@@ -41,7 +39,11 @@ function win_check() {
                 for (let x = 0; x < cel; x++) {
                     document.getElementById("mezo" + i + (k+x)).style.backgroundColor = "rgb(224, 41, 41)";
                 }
-                clickable = false;
+                for (let x = 0; x < alak_hly.length; x++) {
+                    for (let y = 0; y < alak_hly[x].length; y++) {
+                        document.getElementById("mezo" + x + y).setAttribute("onclick","map_updater()");
+                    }
+                }
                 return true;
             }
             db = 0;
@@ -56,7 +58,11 @@ function win_check() {
                 for (let x = 0; x < cel; x++) {
                     document.getElementById("mezo" + (i+x) + k).style.backgroundColor = "rgb(224, 41, 41)";
                 }
-                clickable = false;
+                for (let x = 0; x < alak_hly.length; x++) {
+                    for (let y = 0; y < alak_hly[x].length; y++) {
+                        document.getElementById("mezo" + x + y).setAttribute("onclick","map_updater()");
+                    }
+                }
                 return true;
             }
             db = 0;
@@ -71,7 +77,11 @@ function win_check() {
                 for (let x = 0; x < cel; x++) {
                     document.getElementById("mezo" + (i+x) + (k+x)).style.backgroundColor = "rgb(224, 41, 41)";
                 }
-                clickable = false;
+                for (let x = 0; x < alak_hly.length; x++) {
+                    for (let y = 0; y < alak_hly[x].length; y++) {
+                        document.getElementById("mezo" + x + y).setAttribute("onclick","map_updater()");
+                    }
+                }
                 return true;
             }
             db = 0;
@@ -86,8 +96,19 @@ function win_check() {
                 for (let x = 0; x < cel; x++) {
                     document.getElementById("mezo" + (i+x) + (k-x)).style.backgroundColor = "rgb(224, 41, 41)";
                 }
-                clickable = false;
+                for (let x = 0; x < alak_hly.length; x++) {
+                    for (let y = 0; y < alak_hly[x].length; y++) {
+                        document.getElementById("mezo" + x + y).setAttribute("onclick","map_updater()");
+                    }
+                }
                 return true;
+            }
+        }
+    }
+    if (!find(0)) {
+        for (let x = 0; x < alak_hly.length; x++) {
+            for (let y = 0; y < alak_hly[x].length; y++) {
+                document.getElementById("mezo" + x + y).setAttribute("onclick","map_updater()");
             }
         }
     }
@@ -107,6 +128,7 @@ function reset() {
             alak_hly[i].push(0);
         }
     }
+    //document.getElementById("table_mezok").setAttribute("onclick","");
     clickable = true;
     alakzat = "X";
     mehet = true;
@@ -168,7 +190,6 @@ function bot() {
     let poz = mxhossz("X");
     let ved1;
     let ved2;
-    console.log("poz változó: ",poz);
     if (poz[0] >= cel - 2) {         //védekezés
         if (alak_hly[poz[1]][poz[2]] == 0) {
             alak_hly[poz[1]][poz[2]] = "O";
