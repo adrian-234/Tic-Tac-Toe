@@ -172,8 +172,8 @@ function map_updater() {
             td_elem = tr_elem.insertCell();
             td_elem.setAttribute("id","mezo" + i + k);
             td_elem.setAttribute("onclick","player_move(" + i + "," + k + ")");
-            td_elem.setAttribute("onmouseenter","show_move(" + i + "," + k + ")");
-            td_elem.setAttribute("onmouseleave","show_move(" + i + "," + k + ")");
+            //td_elem.setAttribute("onmouseenter","show_move(" + i + "," + k + ")");
+            //td_elem.setAttribute("onmouseleave","show_move(" + i + "," + k + ")");
             td_elem.setAttribute("width", 900 / mapsize);       //itt lehet gond ha átméretezem a  táblázatot
             td_elem.setAttribute("height", 900 / mapsize);       //itt lehet gond ha átméretezem a  táblázatot
             alak_hly[i].push(0);
