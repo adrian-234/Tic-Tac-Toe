@@ -6,10 +6,11 @@ var mode = "pvp";
 var clickable = true;
 var mehet = true;
 
-function player_move(sor,gomb) {
-    if (alak_hly[sor][gomb] == 0 && clickable) {
-        document.getElementById("mezo" + sor + gomb).innerHTML = alakzat;
-        alak_hly[sor][gomb] = alakzat;
+function player_move(sor,oszlop) {
+    if (alak_hly[sor][oszlop] == 0 && clickable) {
+        document.getElementById("mezo" + sor + oszlop).innerHTML = alakzat;
+        document.getElementById("mezo" + sor + oszlop).style.color = "rgb(0,255,255)";
+        alak_hly[sor][oszlop] = alakzat;
         if (alakzat == "X") {
             alakzat = "O";
         } else {
@@ -171,6 +172,8 @@ function map_updater() {
             td_elem = tr_elem.insertCell();
             td_elem.setAttribute("id","mezo" + i + k);
             td_elem.setAttribute("onclick","player_move(" + i + "," + k + ")");
+            td_elem.setAttribute("onmouseenter","show_move(" + i + "," + k + ")");
+            td_elem.setAttribute("onmouseleave","show_move(" + i + "," + k + ")");
             td_elem.setAttribute("width", 900 / mapsize);       //itt lehet gond ha átméretezem a  táblázatot
             td_elem.setAttribute("height", 900 / mapsize);       //itt lehet gond ha átméretezem a  táblázatot
             alak_hly[i].push(0);
@@ -305,6 +308,16 @@ function mxhossz(alak) {
     }
     console.log(ki);
     return ki
+}
+
+function show_move(sor,oszlop) {
+    if (alak_hly[sor][oszlop] == 0 && clickable && document.getElementById("mezo" + sor + oszlop).innerHTML == "") {
+        document.getElementById("mezo" + sor + oszlop).style.color = "rgba(0,255,255,0.25)";
+        document.getElementById("mezo" + sor + oszlop).innerHTML = alakzat;
+    } else if (alak_hly[sor][oszlop] == 0 && clickable && document.getElementById("mezo" + sor + oszlop).innerHTML == alakzat) {
+        document.getElementById("mezo" + sor + oszlop).innerHTML = "";
+    }
+    
 }
 
 function find(alak) {
